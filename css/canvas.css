@@ -1,0 +1,21 @@
+body{
+    margin: 0;
+}
+#canvas{
+    background-color: burlywood;
+    display: block;
+}
+.actions{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+.actions >#brush{
+    display: none;
+}
+.actions.change >#brush {
+    display: inline-block;
+}
+.actions.change >#eraser {
+    display: none;
+}
