@@ -12,16 +12,20 @@ eraser.onclick = function(){
     eraserEnabled = true
     eraser.classList.add('active')
     pen.classList.remove('active')
+    colors.classList.remove('list')
 }
 pen.onclick = function(){
     eraserEnabled = false
     pen.classList.add('active')
     eraser.classList.remove('active')
+    colors.classList.add('list')
 }
 clear.onclick = function() {
     context.clearRect(0, 0, div.width, div.height);
+    colors.classList.remove('list')
 }
 save.onclick = function() {
+    colors.classList.remove('list')
     var url = div.toDataURL("image/png");
     var a = document.createElement('a');
     document.body.appendChild(a);
