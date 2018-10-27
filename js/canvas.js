@@ -1,6 +1,6 @@
 var div = document.getElementById('canvas')
 var context = div.getContext('2d')
-var lineWidth = 5
+var lineWidth = 2
 
 autoChangeSize(div)
 
@@ -140,14 +140,23 @@ var colorsDom = document.getElementById('colors')
 var colorsLi = colorsDom.getElementsByTagName('li')
 for(let i = 0; i < colorsLi.length; i++){
     colorsLi[i].onclick = function() {
+        for(let j = 0; j <colorsLi.length; j++){
+            colorsLi[j].classList.remove('active')
+        }
         context.strokeStyle = colorsLi[i].id;
+        colorsLi[i].classList.add('active')
+
     }
 }
 
 thin.onclick = function() {
-    lineWidth = 1;
+    lineWidth = 2
+    thin.classList.add('active')
+    bold.classList.remove('active')
 }
 bold.onclick = function() {
-    lineWidth = 3;
+    lineWidth = 4
+    bold.classList.add('active')
+    thin.classList.remove('active')
 }
 
