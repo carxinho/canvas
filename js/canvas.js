@@ -1,5 +1,6 @@
 var div = document.getElementById('canvas')
 var context = div.getContext('2d')
+var lineWidth = 5
 
 autoChangeSize(div)
 
@@ -9,11 +10,25 @@ listenToUser(div)
 var eraserEnabled = false
 eraser.onclick = function(){
     eraserEnabled = true
-    actions.className = 'actions change'
+    eraser.classList.add('active')
+    pen.classList.remove('active')
 }
-brush.onclick = function(){
+pen.onclick = function(){
     eraserEnabled = false
-    actions.className = 'actions'
+    pen.classList.add('active')
+    eraser.classList.remove('active')
+}
+clear.onclick = function() {
+    context.clearRect(0, 0, div.width, div.height);
+}
+save.onclick = function() {
+    var url = div.toDataURL("image/png");
+    var a = document.createElement('a');
+    document.body.appendChild(a);
+    a.href = url;
+    a.download = 'my painting';
+    a.target = '_blank';
+    a.click();
 }
 
 function autoChangeSize(canvans){
@@ -110,10 +125,25 @@ function listenToUser(canvas){
     //画线
     function drawLine(x1,y1,x2,y2){
         context.beginPath()
-        context.strokeStyle = 'black'
-        context.moveTo(x1,y1);
-        context.lineWidth = 5
+        context.moveTo(x1,y1)
         context.lineTo(x2,y2)
         context.stroke()
+        context.lineWidth = lineWidth
     }
 }
+
+var colorsDom = document.getElementById('colors')
+var colorsLi = colorsDom.getElementsByTagName('li')
+for(let i = 0; i < colorsLi.length; i++){
+    colorsLi[i].onclick = function() {
+        context.strokeStyle = colorsLi[i].id;
+    }
+}
+
+thin.onclick = function() {
+    lineWidth = 1;
+}
+bold.onclick = function() {
+    lineWidth = 3;
+}
+

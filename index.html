@@ -5,13 +5,39 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>my canvas</title>
     <link rel="stylesheet" href="./css/canvas.css">
+    <script src="//at.alicdn.com/t/font_889678_j3rraig5128.js"></script>
 </head>
 <body>
     <canvas id="canvas"></canvas>
     <div id="actions" class="actions">
-        <button id=eraser>橡皮擦</button>
-        <button id=brush>画笔</button>
+            <svg id="pen" class="icon active">
+                <use xlink:href="#icon-pen"></use>
+            </svg>
+            <svg id="eraser" class="icon">
+                <use xlink:href="#icon-eraser"></use>
+            </svg>
+            <svg id="clear" class="icon">
+                <use xlink:href="#icon-delete"></use>
+            </svg>
+            <svg id="save" class="icon">
+                <use xlink:href="#icon-icon"></use>
+            </svg>
     </div>
+    <ol class="colors" id="colors">
+        <li id="black" class="black" style="background:black"></li>
+        <li id="red" class="red" style="background:red"></li>
+        <li id="orange" class="orange" style="background:orange"></li>
+        <li id="yellow" class="yellow" style="background:yellow"></li>
+        <li id="green" class="green" style="background:green"></li>
+        <li id="blue" class="blue" style="background:blue"></li>
+        <li id="pink" class="pink" style="background:pink"></li>
+        <li id="purple" class="purple" style="background:purple"></li>
+    </ol>
+    <ol class="sizes" id="sizes">
+        <li id="thin" class="thin"></li>
+        <li id="bold" class="bold"></li>
+    </ol>
     <script src="./js/canvas.js"></script>
+
 </body>
 </html>
